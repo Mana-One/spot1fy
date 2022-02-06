@@ -18,11 +18,6 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
-
-        /*val recyclerView = findViewById<RecyclerView>(R.id.rankings_list)
-        recyclerView.adapter = RankingsItemAdapter(this)
-        recyclerView.setHasFixedSize(true)*/
-        //val rankingsAdapter = RankingsAdapter(this)
     }
 
     override fun onSupportNavigateUp(): Boolean {

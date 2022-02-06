@@ -1,78 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="H1">
+    <style name="H1" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/sf_pro_heavy</item>
         <item name="android:textColor">#000000</item>
         <item name="android:textSize">36sp</item>
     </style>
-    <style name="H2">
+    <style name="H2" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/sf_pro_heavy</item>
         <item name="android:textColor">#000000</item>
         <item name="android:textSize">30sp</item>
     </style>
-    <style name="H3">
+    <style name="H3" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/sf_pro_heavy</item>
         <item name="android:textColor">#000000</item>
         <item name="android:textSize">24sp</item>
     </style>
-    <style name="H4">
+    <style name="H4" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/sf_pro_bold</item>
         <item name="android:textColor">#000000</item>
         <item name="android:textSize">18sp</item>
     </style>
-    <style name="H5">
+    <style name="H5" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/sf_pro_bold</item>
         <item name="android:textColor">#000000</item>
         <item name="android:textSize">16sp</item>
     </style>
-    <style name="H6">
+    <style name="H6" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/sf_pro_bold</item>
         <item name="android:textColor">#000000</item>
         <item name="android:textSize">14sp</item>
     </style>
-    <style name="caps_heading_big">
+    <style name="caps_heading_big" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/sf_pro_heavy</item>
         <item name="android:textColor">#00AC5A</item>
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">2</item>
     </style>
-    <style name="caps_heading_normal">
+    <style name="caps_heading_normal" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/sf_pro_heavy</item>
         <item name="android:textColor">#00AC5A</item>
         <item name="android:textSize">12sp</item>
         <item name="android:letterSpacing">2</item>
     </style>
-    <style name="caps_heading_small">
+    <style name="caps_heading_small" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/sf_pro_regular</item>
         <item name="android:textColor">#000000</item>
         <item name="android:textSize">12sp</item>
     </style>
-    <style name="base_text">
+    <style name="base_text" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/sf_pro_regular</item>
         <item name="android:textColor">#000000</item>
         <item name="android:textSize">16sp</item>
     </style>
-    <style name="base_text_grey">
+    <style name="base_text_grey" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/sf_pro_regular</item>
         <item name="android:textColor">#8D8D8D</item>
         <item name="android:textSize">16sp</item>
     </style>
-    <style name="normal_text">
+    <style name="normal_text" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/sf_pro_regular</item>
         <item name="android:textColor">#000000</item>
         <item name="android:textSize">14sp</item>
     </style>
-    <style name="normal_text_grey">
+    <style name="normal_text_grey" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/sf_pro_regular</item>
         <item name="android:textColor">#8D8D8D</item>
         <item name="android:textSize">14sp</item>
     </style>
-    <style name="small_text">
+    <style name="small_text" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/sf_pro_regular</item>
         <item name="android:textColor">#000000</item>
         <item name="android:textSize">12sp</item>
     </style>
-    <style name="mini_text">
+    <style name="mini_text" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/sf_pro_regular</item>
         <item name="android:textColor">#000000</item>
         <item name="android:textSize">10sp</item>

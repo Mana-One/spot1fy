@@ -8,4 +8,12 @@
         android:id="@+id/rankingsFragment"
         android:name="com.manaois.spot1fy.rankings.RankingsFragment"
         android:label="RankingsFragment" />
+    <fragment
+        android:id="@+id/favouritesFragment"
+        android:name="com.manaois.spot1fy.favourites.FavouritesFragment"
+        android:label="FavouritesFragment" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.manaois.spot1fy.search.SearchFragment"
+        android:label="SearchFragment" />
 </navigation>

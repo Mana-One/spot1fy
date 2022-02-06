@@ -4,9 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.recyclerview.widget.RecyclerView
-import com.manaois.spot1fy.rankings.RankingsAdapter
-import com.manaois.spot1fy.rankings.RankingsItemAdapter
+import androidx.navigation.ui.NavigationUI
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
@@ -18,6 +17,8 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
+
+        NavigationUI.setupWithNavController(main_bottom_nav, navHostFragment.navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {

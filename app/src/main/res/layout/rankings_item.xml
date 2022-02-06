@@ -1,7 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rankings_item_title"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="I am a rankings item"
-    style="@style/normal_text"/>
+    android:layout_height="wrap_content">
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/rankings_item_rank"
+        android:gravity="center"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:text="0"
+        style="@style/H4"
+        app:layout_constraintTop_toTopOf="@id/rankings_item_thumbnail"
+        app:layout_constraintBottom_toBottomOf="@id/rankings_item_thumbnail"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <ImageView
+        android:id="@+id/rankings_item_thumbnail"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/rankings_item_rank"/>
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/rankings_item_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="I am a rankings item"
+        style="@style/H5"
+        app:layout_constraintTop_toTopOf="@id/rankings_item_thumbnail"
+        app:layout_constraintLeft_toRightOf="@id/rankings_item_thumbnail"/>
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/rankings_item_artist"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="I am a rankings item's artist"
+        style="@style/base_text_grey"
+        app:layout_constraintTop_toBottomOf="@id/rankings_item_title"
+        app:layout_constraintBottom_toBottomOf="@id/rankings_item_thumbnail"
+        app:layout_constraintLeft_toRightOf="@id/rankings_item_thumbnail" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

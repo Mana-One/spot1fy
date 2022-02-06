@@ -7,11 +7,11 @@ class RankedItem(
 ) {
     companion object {
         fun mockSongs() = List<RankedItem>(10) {
-            RankedItem("Gucci Gang", "Lil Pump", "some url")
+            RankedItem("Gucci Gang", "Lil Pump", "https://i1.sndcdn.com/artworks-000243000404-miq00m-t500x500.jpg")
         }
 
         fun mockAlbums() = List<RankedItem>(10) {
-            RankedItem("After hours", "Khalid", "some url")
+            RankedItem("After hours", "Khalid", "https://cdns-images.dzcdn.net/images/cover/fd00ebd6d30d7253f813dba3bb1c66a9/264x264.jpg")
         }
     }
 }

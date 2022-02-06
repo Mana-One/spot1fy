@@ -2,8 +2,8 @@ package com.manaois.spot1fy
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Window
 import androidx.recyclerview.widget.RecyclerView
+import com.manaois.spot1fy.rankings.RankingsItemAdapter
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

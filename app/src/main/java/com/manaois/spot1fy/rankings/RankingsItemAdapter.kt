@@ -10,7 +10,7 @@ import com.manaois.spot1fy.R
 
 class RankingsItemAdapter(
     private val context: Context,
-    private val dataset: List<String> = List(10) { "Hey I am an element !" }
+    private val dataset: List<String>
 ) : RecyclerView.Adapter<RankingsItemAdapter.RankingsItemViewHolder>() {
 
     class RankingsItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {

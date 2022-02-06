@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.manaois.spot1fy.R
+import com.manaois.spot1fy.rankings.models.RankedItem
 
 class RankingsItemAdapter(
     private val context: Context,
-    private val dataset: List<String>
+    private val dataset: List<RankedItem>
 ) : RecyclerView.Adapter<RankingsItemAdapter.RankingsItemViewHolder>() {
 
     class RankingsItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
@@ -25,7 +26,7 @@ class RankingsItemAdapter(
 
     override fun onBindViewHolder(holder: RankingsItemViewHolder, position: Int) {
         val item = dataset[position]
-        holder.textView.text = "$position - $item"
+        holder.textView.text = "$position - ${item.name} by ${item.artist}"
     }
 
     override fun getItemCount() = dataset.size

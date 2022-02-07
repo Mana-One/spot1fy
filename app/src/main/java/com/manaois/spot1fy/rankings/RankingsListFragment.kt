@@ -8,15 +8,15 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.manaois.spot1fy.R
 import com.manaois.spot1fy.rankings.models.RankedItem
+import com.manaois.spot1fy.rankings.network.RankingsApiRequest
+import kotlinx.coroutines.*
 
 class RankingsListFragment(private val label: String): Fragment() {
-    private lateinit var dataset: List<RankedItem>
+    private lateinit var adapter: RankingsItemAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        dataset = if (label == "song") {
-            RankedItem.mockSongs()
-        } else RankedItem.mockAlbums()
+    companion object {
+        const val TYPE_SONG = "song"
+        const val TYPE_ALBUM = "album"
     }
 
     override fun onCreateView(
@@ -29,9 +29,18 @@ class RankingsListFragment(private val label: String): Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val recyclerView: RecyclerView = view.findViewById(R.id.rankings_list)
-        val adapter = RankingsItemAdapter(requireContext(), dataset)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.rankings_list)
+        val adapter = RankingsItemAdapter(requireContext(), listOf())
         recyclerView.adapter = adapter
-        recyclerView.setHasFixedSize(true)
+
+        GlobalScope.launch(Dispatchers.Main) {
+            val result = if (label == TYPE_SONG) {
+                RankingsApiRequest.getRankedSongs()
+            } else {
+                RankingsApiRequest.getRankedAlbums()
+            }
+            val adapter = RankingsItemAdapter(requireContext(), result)
+            recyclerView.swapAdapter(adapter, true)
+        }
     }
 }

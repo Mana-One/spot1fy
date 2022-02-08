@@ -17,10 +17,18 @@ class RankingsItemAdapter(
 ) : RecyclerView.Adapter<RankingsItemAdapter.RankingsItemViewHolder>() {
 
     class RankingsItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        val rankTextView = view.findViewById<TextView>(R.id.rankings_item_rank)
-        val thumbnailImageView = view.findViewById<ImageView>(R.id.rankings_item_thumbnail)
-        val titleTextView = view.findViewById<TextView>(R.id.rankings_item_title)
-        val artistTextView = view.findViewById<TextView>(R.id.rankings_item_artist)
+        fun bind(rankedItem: RankedItem, position: Int) {
+            val rankTextView = view.findViewById<TextView>(R.id.rankings_item_rank)
+            val thumbnailImageView = view.findViewById<ImageView>(R.id.rankings_item_thumbnail)
+            val titleTextView = view.findViewById<TextView>(R.id.rankings_item_title)
+            val artistTextView = view.findViewById<TextView>(R.id.rankings_item_artist)
+
+            rankTextView.text = "${position + 1}"
+            thumbnailImageView.clipToOutline = true
+            Picasso.get().load(rankedItem.thumbnail).into(thumbnailImageView)
+            titleTextView.text = rankedItem.name
+            artistTextView.text = rankedItem.artist
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RankingsItemViewHolder {
@@ -31,10 +39,7 @@ class RankingsItemAdapter(
 
     override fun onBindViewHolder(holder: RankingsItemViewHolder, position: Int) {
         val item = dataset[position]
-        holder.rankTextView.text = "${position + 1}"
-        Picasso.get().load(item.thumbnail).into(holder.thumbnailImageView)
-        holder.titleTextView.text = item.name
-        holder.artistTextView.text = item.artist
+        holder.bind(item, position)
     }
 
     override fun getItemCount() = dataset.size

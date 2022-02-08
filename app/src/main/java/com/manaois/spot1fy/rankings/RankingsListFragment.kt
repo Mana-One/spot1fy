@@ -43,8 +43,6 @@ class RankingsListFragment(private val label: String): Fragment() {
                     adapter = RankingsItemAdapter(requireContext(), result)
                 }
             }
-            /*val adapter = RankingsItemAdapter(requireContext(), result)
-            recyclerView.swapAdapter(adapter, true)*/
         }
     }
 }

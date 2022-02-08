@@ -46,15 +46,11 @@ object RankingsApiRequest {
 
     suspend fun getRankedSongs(): List<RankedItem> {
         val result = api.getRankedSongs().await()
-        println("--------")
-        println(result.trending)
-        println("--------")
         return result.trending
     }
 
     suspend fun getRankedAlbums(): List<RankedItem> {
-        val result =api.getRankedAlbums().await()
-
+        val result = api.getRankedAlbums().await()
         return result.trending
     }
 }

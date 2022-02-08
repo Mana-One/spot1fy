@@ -12,6 +12,7 @@ import com.manaois.spot1fy.rankings.network.RankingsApiRequest
 import kotlinx.coroutines.*
 
 class RankingsListFragment(private val label: String): Fragment() {
+    private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RankingsItemAdapter
 
     companion object {
@@ -29,18 +30,21 @@ class RankingsListFragment(private val label: String): Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.rankings_list)
-        val adapter = RankingsItemAdapter(requireContext(), listOf())
-        recyclerView.adapter = adapter
 
-        GlobalScope.launch(Dispatchers.Main) {
+        GlobalScope.launch() {
             val result = if (label == TYPE_SONG) {
                 RankingsApiRequest.getRankedSongs()
             } else {
                 RankingsApiRequest.getRankedAlbums()
             }
-            val adapter = RankingsItemAdapter(requireContext(), result)
-            recyclerView.swapAdapter(adapter, true)
+
+            withContext(Dispatchers.Main) {
+                recyclerView = view.findViewById<RecyclerView>(R.id.rankings_list).apply {
+                    adapter = RankingsItemAdapter(requireContext(), result)
+                }
+            }
+            /*val adapter = RankingsItemAdapter(requireContext(), result)
+            recyclerView.swapAdapter(adapter, true)*/
         }
     }
 }

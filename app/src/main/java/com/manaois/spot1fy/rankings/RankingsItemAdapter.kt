@@ -31,7 +31,7 @@ class RankingsItemAdapter(
 
     override fun onBindViewHolder(holder: RankingsItemViewHolder, position: Int) {
         val item = dataset[position]
-        holder.rankTextView.text = "$position"
+        holder.rankTextView.text = "${position + 1}"
         Picasso.get().load(item.thumbnail).into(holder.thumbnailImageView)
         holder.titleTextView.text = item.name
         holder.artistTextView.text = item.artist

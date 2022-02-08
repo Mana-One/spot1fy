@@ -8,6 +8,6 @@ data class RankedSong(
     @SerializedName(value = "strArtist")
     override val artist: String,
     @SerializedName(value = "strTrackThumb")
-    override val thumbnail: String?
+    override val thumbnail: String
 ) : RankedItem {
 }

@@ -31,7 +31,12 @@ class RankingsListFragment(private val label: String): Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val loader = view.findViewById<View>(R.id.loader)
         GlobalScope.launch() {
+            withContext(Dispatchers.Main) {
+                loader.visibility = View.VISIBLE
+            }
+
             val result = if (label == TYPE_SONG) {
                 RankingsApiRequest.getRankedSongs()
             } else {
@@ -42,6 +47,7 @@ class RankingsListFragment(private val label: String): Fragment() {
                 recyclerView = view.findViewById<RecyclerView>(R.id.rankings_list).apply {
                     adapter = RankingsItemAdapter(requireContext(), result)
                 }
+                loader.visibility = View.GONE
             }
         }
     }

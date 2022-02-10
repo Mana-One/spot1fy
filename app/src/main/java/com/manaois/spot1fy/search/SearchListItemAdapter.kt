@@ -4,15 +4,19 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.manaois.spot1fy.R
+import com.manaois.spot1fy.search.models.Album
+import com.manaois.spot1fy.search.models.Artist
+import com.squareup.picasso.Picasso
 import java.lang.Exception
 
 class SearchListItemAdapter(
     private val context: Context,
-    private val artistList: List<String> = List(5) { "test artist "},
-    private val albumList: List<String> = List(5) { "test album" }
+    private val artistList: List<Artist>,
+    private val albumList: List<Album>
 ) : RecyclerView.Adapter<SearchListItemAdapter.SearchListItemViewHolder>() {
 
     companion object {
@@ -31,12 +35,21 @@ class SearchListItemAdapter(
             view.findViewById<TextView>(R.id.list_header_title).text = "Albums"
         }
 
-        fun bindArtist(data: String) {
-            view.findViewById<TextView>(R.id.artist_item_title).text = data
+        fun bindArtist(data: Artist) {
+            view.findViewById<TextView>(R.id.artist_item_title).text = data.name
+            if (data.thumbnail != null) {
+                val thumbnail = view.findViewById<ImageView>(R.id.artist_item_thumbnail)
+                Picasso.get().load(data.thumbnail).into(thumbnail)
+            }
         }
 
-        fun bindAlbum(data: String) {
-            view.findViewById<TextView>(R.id.album_item_artist).text = data
+        fun bindAlbum(data: Album) {
+            view.findViewById<TextView>(R.id.album_item_title).text = data.name
+            view.findViewById<TextView>(R.id.album_item_artist).text = data.artist
+            if (data.thumbnail != null) {
+                val thumbnail = view.findViewById<ImageView>(R.id.album_item_thumbnail)
+                Picasso.get().load(data.thumbnail).into(thumbnail)
+            }
         }
     }
 

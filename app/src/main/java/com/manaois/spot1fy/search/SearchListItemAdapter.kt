@@ -90,7 +90,7 @@ class SearchListItemAdapter(
             ALBUMS_HEADER -> holder.bindAlbumsHeader()
             ARTIST -> holder.bindArtist(artistList[position - 1])
             ALBUM -> holder.bindAlbum(albumList[position - artistList.size - 2])
-            else -> throw  Exception("Invalid view type.")
+            else -> throw Exception("Invalid view type.")
         }
     }
 }

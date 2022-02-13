@@ -7,6 +7,8 @@ data class ArtistDetails(
     val id: String,
     @SerializedName("strArtist")
     val name: String,
+    @SerializedName("strArtistThumb")
+    val image: String,
     @SerializedName("strCountry")
     val locality: String,
     @SerializedName("strGenre")

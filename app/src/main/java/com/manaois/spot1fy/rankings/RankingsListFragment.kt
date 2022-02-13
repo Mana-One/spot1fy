@@ -45,7 +45,7 @@ class RankingsListFragment(private val label: String): Fragment() {
 
             withContext(Dispatchers.Main) {
                 recyclerView = view.findViewById<RecyclerView>(R.id.rankings_list).apply {
-                    adapter = RankingsItemAdapter(requireContext(), result)
+                    adapter = RankingsItemAdapter(result)
                 }
                 loader.visibility = View.GONE
             }

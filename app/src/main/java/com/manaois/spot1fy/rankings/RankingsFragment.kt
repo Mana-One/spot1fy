@@ -14,16 +14,13 @@ import com.manaois.spot1fy.databinding.FragmentRankingsBinding
 class RankingsFragment: Fragment() {
     private lateinit var rankingsAdapter: RankingsAdapter
     private lateinit var viewPager: ViewPager2
-    private var _binding: FragmentRankingsBinding? = null
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentRankingsBinding.inflate(inflater, container, false)
-        return binding.root
+        return inflater.inflate(R.layout.fragment_rankings, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

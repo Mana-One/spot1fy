@@ -14,4 +14,7 @@
         <!-- Customize your theme here. -->
         <item name="windowNoTitle">true</item>
     </style>
+    <style name="Theme.Spot1fy.Fullscreen" parent="Theme.Spot1fy">
+        <item name="android:windowFullscreen">true</item>
+    </style>
 </resources>

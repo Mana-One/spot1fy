@@ -2,6 +2,7 @@ package com.manaois.spot1fy
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -19,6 +20,15 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
         NavigationUI.setupWithNavController(main_bottom_nav, navHostFragment.navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            main_bottom_nav.visibility = when(destination.id) {
+                R.id.rankingsFragment,
+                    R.id.searchFragment,
+                    R.id.favouritesFragment -> View.VISIBLE
+                else -> View.GONE
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

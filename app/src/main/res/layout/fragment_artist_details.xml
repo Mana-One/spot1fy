@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/Theme.Spot1fy.Fullscreen">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="15dp"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="15dp"/>
+
+    <ImageView
+        android:id="@+id/artist_details_image"
+        android:layout_width="match_parent"
+        android:layout_height="345dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <View
+        android:id="@+id/artist_details_back_arrow"
+        android:background="@drawable/ic_fleche_gauche"
+        android:layout_width="12dp"
+        android:layout_height="20dp"
+        app:layout_constraintTop_toTopOf="@id/artist_details_like_icon"
+        app:layout_constraintBottom_toBottomOf="@id/artist_details_like_icon"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"/>
+
+    <View
+        android:id="@+id/artist_details_like_icon"
+        android:background="@drawable/ic_like_off"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="?android:attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"/>
+
+    <TextView
+        android:id="@+id/artist_details_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="10dp"
+        android:text="Khalid"
+        style="@style/H1"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@id/artist_details_image"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintBottom_toTopOf="@id/artist_details_locality_and_genre" />
+
+    <TextView
+        android:id="@+id/artist_details_locality_and_genre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="Toronto, Canada - R&amp;B"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintBottom_toBottomOf="@id/artist_details_image" />
+
+    <TextView
+        android:id="@+id/artist_details_biography"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Artist's description"
+        style="@style/base_text_grey"
+        app:layout_constraintTop_toBottomOf="@id/artist_details_image"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/artist_details_discography"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="15dp"
+        android:scrollbars="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/artist_details_biography"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"/>
+
+    <include
+        android:id="@+id/loader"
+        layout="@layout/loader"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

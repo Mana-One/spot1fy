@@ -50,7 +50,7 @@ class SearchFragment: Fragment() {
         }
 
         view.findViewById<RecyclerView>(R.id.search_list).apply {
-            adapter = SearchListItemAdapter(requireContext(), listOf(), listOf())
+            adapter = SearchListItemAdapter(listOf(), listOf())
         }
     }
 
@@ -66,7 +66,7 @@ class SearchFragment: Fragment() {
 
             withContext(Dispatchers.Main) {
                 recyclerView.apply {
-                    adapter = SearchListItemAdapter(requireContext(), artists, albums)
+                    adapter = SearchListItemAdapter(artists, albums)
                 }
                 println("hide loader")
                 loader.visibility = View.GONE

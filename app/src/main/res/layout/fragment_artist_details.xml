@@ -72,9 +72,11 @@
 
     <TextView
         android:id="@+id/artist_details_biography"
+        android:ellipsize="end"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:maxLines="5"
         android:text="Artist's description"
         style="@style/base_text_grey"
         app:layout_constraintTop_toBottomOf="@id/artist_details_image"

@@ -12,7 +12,6 @@ import com.manaois.spot1fy.rankings.models.RankedItem
 import com.squareup.picasso.Picasso
 
 class RankingsItemAdapter(
-    private val context: Context,
     private val dataset: List<RankedItem>
 ) : RecyclerView.Adapter<RankingsItemAdapter.RankingsItemViewHolder>() {
 

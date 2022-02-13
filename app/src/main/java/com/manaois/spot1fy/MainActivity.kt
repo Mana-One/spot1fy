@@ -1,8 +1,10 @@
 package com.manaois.spot1fy
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -26,7 +28,15 @@ class MainActivity : AppCompatActivity() {
                 R.id.rankingsFragment,
                     R.id.searchFragment,
                     R.id.favouritesFragment -> View.VISIBLE
-                else -> View.GONE
+                else -> {
+                    window.apply {
+                        clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                        addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                        decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        statusBarColor = Color.TRANSPARENT
+                    }
+                    View.GONE
+                }
             }
         }
     }

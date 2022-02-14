@@ -21,7 +21,7 @@
     <ImageView
         android:id="@+id/artist_details_image"
         android:layout_width="match_parent"
-        android:layout_height="345dp"
+        android:layout_height="344dp"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>

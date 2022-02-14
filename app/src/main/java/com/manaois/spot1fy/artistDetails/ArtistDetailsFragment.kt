@@ -47,7 +47,7 @@ class ArtistDetailsFragment : Fragment() {
             }
 
             val artistDetails = ArtistDetailsApiRequest.getArtistDetails(artistId)
-            val albums = ArtistDetailsApiRequest.getArtistAlums(artistId)
+            val albums = ArtistDetailsApiRequest.getArtistAlums(artistId).sortedByDescending { it.year }
             val popularSongs = ArtistDetailsApiRequest.getArtistPopularSongs(artistDetails.name)
 
             withContext(Dispatchers.Main) {

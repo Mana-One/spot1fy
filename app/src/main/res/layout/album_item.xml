@@ -1,27 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="wrap_content"
+    android:layout_height="70dp"
     android:layout_width="match_parent"
-    android:layout_margin="15dp"
+    android:layout_marginTop="10dp"
     app:cardCornerRadius="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="#F3F3F3">
-        
-        <ImageView
-            android:id="@+id/album_item_thumbnail"
-            android:background="@drawable/ic_placeholder_album"
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/album_item_thumbnail_container"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="5dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:id="@+id/album_item_thumbnail"
+                android:background="@drawable/ic_placeholder_album"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/album_item_title"
@@ -33,8 +42,8 @@
             android:maxLines="1"
             android:text="Album title"
             style="@style/H5"
-            app:layout_constraintTop_toTopOf="@id/album_item_thumbnail"
-            app:layout_constraintLeft_toRightOf="@id/album_item_thumbnail"
+            app:layout_constraintTop_toTopOf="@id/album_item_thumbnail_container"
+            app:layout_constraintLeft_toRightOf="@id/album_item_thumbnail_container"
             app:layout_constraintRight_toLeftOf="@id/album_item_arrow"/>
 
         <TextView
@@ -48,9 +57,9 @@
             android:text="Album title"
             style="@style/normal_text_grey"
             app:layout_constraintTop_toBottomOf="@id/album_item_title"
-            app:layout_constraintLeft_toRightOf="@id/album_item_thumbnail"
+            app:layout_constraintLeft_toRightOf="@id/album_item_thumbnail_container"
             app:layout_constraintRight_toLeftOf="@id/album_item_arrow"
-            app:layout_constraintBottom_toBottomOf="@id/album_item_thumbnail"/>
+            app:layout_constraintBottom_toBottomOf="@id/album_item_thumbnail_container"/>
 
         <ImageView
             android:id="@+id/album_item_arrow"
@@ -58,9 +67,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
-            app:layout_constraintTop_toTopOf="@id/album_item_thumbnail"
+            app:layout_constraintTop_toTopOf="@id/album_item_thumbnail_container"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/album_item_thumbnail"/>
+            app:layout_constraintBottom_toBottomOf="@id/album_item_thumbnail_container"/>
         
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -2,8 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="15dp">
+    android:layout_height="44dp">
 
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/song_item_rank"
@@ -23,7 +22,8 @@
         android:maxLines="1"
         android:text="I am a song item"
         style="@style/base_text"
-        app:layout_constraintTop_toTopOf="@id/song_item_rank"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/song_item_rank"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -32,8 +32,7 @@
         android:layout_width="0dp"
         android:layout_height="2dp"
         android:background="#F3F3F3"
-        app:layout_constraintTop_toBottomOf="@id/song_item_title"
-        app:layout_constraintBottom_toBottomOf="@id/song_item_rank"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/song_item_title"
         app:layout_constraintEnd_toEndOf="parent"/>
 

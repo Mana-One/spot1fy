@@ -36,7 +36,6 @@ class SearchFragment: Fragment() {
 
         editText.addTextChangedListener(
             afterTextChanged = {
-                println("Text CHANGED")
                 val input = it?.toString()
                 if (input != null && input.isNotEmpty()) {
                     search(input)
@@ -44,20 +43,18 @@ class SearchFragment: Fragment() {
             }
         )
 
-
         view.findViewById<View>(R.id.search_cancel_icon).setOnClickListener {
             editText.setText("")
         }
 
         view.findViewById<RecyclerView>(R.id.search_list).apply {
-            adapter = SearchListItemAdapter(requireContext(), listOf(), listOf())
+            adapter = SearchListItemAdapter(listOf(), listOf())
         }
     }
 
     private fun search(input: String) {
         GlobalScope.launch {
             withContext(Dispatchers.Main) {
-                println("Show loader")
                 loader.visibility = View.VISIBLE
             }
 
@@ -66,9 +63,8 @@ class SearchFragment: Fragment() {
 
             withContext(Dispatchers.Main) {
                 recyclerView.apply {
-                    adapter = SearchListItemAdapter(requireContext(), artists, albums)
+                    adapter = SearchListItemAdapter(artists, albums)
                 }
-                println("hide loader")
                 loader.visibility = View.GONE
             }
         }

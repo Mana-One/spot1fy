@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="H1" parent="TextAppearance.AppCompat">
-        <item name="android:fontFamily">@font/sfpro_text_regular</item>
+        <item name="android:fontFamily">@font/sfpro_display_heavy</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">36sp</item>
     </style>
     <style name="H2" parent="TextAppearance.AppCompat">
-        <item name="android:fontFamily">@font/sfpro_text_regular</item>
+        <item name="android:fontFamily">@font/sfpro_display_heavy</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">30sp</item>
     </style>
     <style name="H3" parent="TextAppearance.AppCompat">
-        <item name="android:fontFamily">@font/sfpro_text_regular</item>
+        <item name="android:fontFamily">@font/sfpro_display_heavy</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">24sp</item>
     </style>
     <style name="H4" parent="TextAppearance.AppCompat">
-        <item name="android:fontFamily">@font/sfpro_text_regular</item>
+        <item name="android:fontFamily">@font/sfpro_display_bold</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">18sp</item>
     </style>
     <style name="H5" parent="TextAppearance.AppCompat">
-        <item name="android:fontFamily">@font/sfpro_text_regular</item>
+        <item name="android:fontFamily">@font/sfpro_display_bold</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">16sp</item>
     </style>

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.manaois.spot1fy.R
 import com.manaois.spot1fy.favourites.models.LikedAlbum
@@ -25,8 +26,8 @@ class FavouritesListItemAdapter(
     }
 
     class FavouritesListItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        fun bindArtistsHeader(count: Int) {
-            view.findViewById<TextView>(R.id.list_header_title).text = "Artists - $count"
+        fun bindArtistsHeader() {
+            view.findViewById<TextView>(R.id.list_header_title).text = "Artists"
         }
 
         fun bindAlbumsHeader() {
@@ -38,6 +39,12 @@ class FavouritesListItemAdapter(
             if (data.thumbnail != null) {
                 val thumbnail = view.findViewById<ImageView>(R.id.artist_item_thumbnail)
                 Picasso.get().load(data.thumbnail).into(thumbnail)
+            }
+
+            view.setOnClickListener {
+                val action = FavouritesFragmentDirections
+                    .actionFavouritesFragmentToArtistDetailsFragment(artistId = "147737")
+                it.findNavController().navigate(action)
             }
         }
 
@@ -68,7 +75,7 @@ class FavouritesListItemAdapter(
 
     override fun onBindViewHolder(holder: FavouritesListItemViewHolder, position: Int) {
         when(getItemViewType(position)) {
-            ARTISTS_HEADER -> holder.bindArtistsHeader(itemCount)
+            ARTISTS_HEADER -> holder.bindArtistsHeader()
             ALBUMS_HEADER -> holder.bindAlbumsHeader()
             LIKED_ARTIST -> holder.bindLikedArtist(favouriteArtists[position - 1])
             LIKED_ALBUM -> holder.bindLikedAlbum(favouriteAlbums[position - favouriteArtists.size - 2])

@@ -1,11 +1,11 @@
 package com.manaois.spot1fy.search
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.manaois.spot1fy.R
 import com.manaois.spot1fy.search.models.Album
@@ -14,7 +14,6 @@ import com.squareup.picasso.Picasso
 import java.lang.Exception
 
 class SearchListItemAdapter(
-    private val context: Context,
     private val artistList: List<Artist>,
     private val albumList: List<Album>
 ) : RecyclerView.Adapter<SearchListItemAdapter.SearchListItemViewHolder>() {
@@ -40,6 +39,12 @@ class SearchListItemAdapter(
             if (data.thumbnail != null) {
                 val thumbnail = view.findViewById<ImageView>(R.id.artist_item_thumbnail)
                 Picasso.get().load(data.thumbnail).into(thumbnail)
+            }
+
+            view.setOnClickListener {
+                val action = SearchFragmentDirections
+                    .actionSearchFragmentToArtistDetailsFragment(artistId = data.id)
+                it.findNavController().navigate(action)
             }
         }
 

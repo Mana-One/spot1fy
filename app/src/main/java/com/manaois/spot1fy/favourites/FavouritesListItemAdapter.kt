@@ -26,8 +26,8 @@ class FavouritesListItemAdapter(
     }
 
     class FavouritesListItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        fun bindArtistsHeader(count: Int) {
-            view.findViewById<TextView>(R.id.list_header_title).text = "Artists - $count"
+        fun bindArtistsHeader() {
+            view.findViewById<TextView>(R.id.list_header_title).text = "Artists"
         }
 
         fun bindAlbumsHeader() {
@@ -43,7 +43,7 @@ class FavouritesListItemAdapter(
 
             view.setOnClickListener {
                 val action = FavouritesFragmentDirections
-                    .actionFavouritesFragmentToArtistDetailsFragment()
+                    .actionFavouritesFragmentToArtistDetailsFragment(artistId = "147737")
                 it.findNavController().navigate(action)
             }
         }
@@ -75,7 +75,7 @@ class FavouritesListItemAdapter(
 
     override fun onBindViewHolder(holder: FavouritesListItemViewHolder, position: Int) {
         when(getItemViewType(position)) {
-            ARTISTS_HEADER -> holder.bindArtistsHeader(itemCount)
+            ARTISTS_HEADER -> holder.bindArtistsHeader()
             ALBUMS_HEADER -> holder.bindAlbumsHeader()
             LIKED_ARTIST -> holder.bindLikedArtist(favouriteArtists[position - 1])
             LIKED_ALBUM -> holder.bindLikedAlbum(favouriteAlbums[position - favouriteArtists.size - 2])

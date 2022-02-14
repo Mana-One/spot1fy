@@ -12,17 +12,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.manaois.spot1fy.R
 import com.manaois.spot1fy.artistDetails.network.ArtistDetailsApiRequest
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_artist_details.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class ArtistDetailsFragment : Fragment() {
+    private lateinit var artistId: String
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        artistId = arguments?.get("artistId").toString()
         return inflater.inflate(R.layout.fragment_artist_details, container, false)
     }
 
@@ -37,32 +41,21 @@ class ArtistDetailsFragment : Fragment() {
     }
 
     private fun loadContent(view: View) {
-        val loader = view.findViewById<View>(R.id.loader)
         GlobalScope.launch {
             withContext(Dispatchers.Main) {
                 loader.visibility = View.VISIBLE
             }
 
-            val artistDetails = ArtistDetailsApiRequest.getArtistDetails("147737")
-            val albums = ArtistDetailsApiRequest.getArtistAlums("147737")
+            val artistDetails = ArtistDetailsApiRequest.getArtistDetails(artistId)
+            val albums = ArtistDetailsApiRequest.getArtistAlums(artistId)
             val popularSongs = ArtistDetailsApiRequest.getArtistPopularSongs(artistDetails.name)
 
-            println("____")
-            println("2 ${albums.size} ${popularSongs.size}")
-            println("____")
-
             withContext(Dispatchers.Main) {
-                val image: ImageView = view.findViewById(R.id.artist_details_image)
-                val artistName: TextView = view.findViewById(R.id.artist_details_name)
-                val localityAndGenre: TextView = view.findViewById(R.id.artist_details_locality_and_genre)
-                val biography: TextView = view.findViewById(R.id.artist_details_biography)
-                val discography: RecyclerView = view.findViewById(R.id.artist_details_discography)
-
-                Picasso.get().load(artistDetails.image).into(image)
-                artistName.text = artistDetails.name
-                localityAndGenre.text = "${artistDetails.locality} - ${artistDetails.genre}"
-                biography.text = artistDetails.biography
-                discography.apply {
+                Picasso.get().load(artistDetails.image).into(artist_details_image)
+                artist_details_name.text = artistDetails.name
+                artist_details_locality_and_genre.text = "${artistDetails.locality} - ${artistDetails.genre}"
+                artist_details_biography.text = artistDetails.biography
+                artist_details_discography.apply {
                     adapter = ArtistDiscographyItemAdapter(albums, popularSongs)
                 }
 

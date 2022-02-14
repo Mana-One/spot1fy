@@ -9,7 +9,7 @@
         <entry key="app/src/main/res/drawable/search_bar_frame.xml" value="0.191" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23324275362318841" />
         <entry key="app/src/main/res/layout/album_item.xml" value="0.23324275362318841" />
-        <entry key="app/src/main/res/layout/artist_item.xml" value="0.23324275362318841" />
+        <entry key="app/src/main/res/layout/artist_item.xml" value="0.2620620285255322" />
         <entry key="app/src/main/res/layout/fragment_album_details.xml" value="0.23324275362318841" />
         <entry key="app/src/main/res/layout/fragment_artist_details.xml" value="0.35980987548828125" />
         <entry key="app/src/main/res/layout/fragment_favourites.xml" value="0.2472686767578125" />

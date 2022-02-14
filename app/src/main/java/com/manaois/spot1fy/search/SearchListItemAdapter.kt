@@ -1,6 +1,5 @@
 package com.manaois.spot1fy.search
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,7 +42,8 @@ class SearchListItemAdapter(
             }
 
             view.setOnClickListener {
-                val action = SearchFragmentDirections.actionSearchFragmentToArtistDetailsFragment()
+                val action = SearchFragmentDirections
+                    .actionSearchFragmentToArtistDetailsFragment(artistId = data.id)
                 it.findNavController().navigate(action)
             }
         }

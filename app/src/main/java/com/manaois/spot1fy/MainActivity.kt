@@ -26,15 +26,13 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             main_bottom_nav.visibility = when(destination.id) {
                 R.id.rankingsFragment,
-                    R.id.searchFragment,
-                    R.id.favouritesFragment -> View.VISIBLE
+                R.id.searchFragment,
+                R.id.favouritesFragment -> {
+                    removeFullscreen()
+                    View.VISIBLE
+                }
                 else -> {
-                    window.apply {
-                        clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-                        addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-                        decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        statusBarColor = Color.TRANSPARENT
-                    }
+                    setFullScreen()
                     View.GONE
                 }
             }
@@ -43,5 +41,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
+    }
+
+    private fun setFullScreen() {
+        window?.decorView?.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
+    }
+
+    private fun removeFullscreen() {
+        window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
     }
 }

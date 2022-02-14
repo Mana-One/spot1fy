@@ -31,5 +31,9 @@
     <fragment
         android:id="@+id/artistDetailsFragment"
         android:name="com.manaois.spot1fy.artistDetails.ArtistDetailsFragment"
-        android:label="ArtistDetailsFragment" />
+        android:label="ArtistDetailsFragment" >
+        <argument
+            android:name="artistId"
+            app:argType="string" />
+    </fragment>
 </navigation>

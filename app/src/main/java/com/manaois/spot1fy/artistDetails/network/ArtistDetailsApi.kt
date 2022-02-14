@@ -67,7 +67,7 @@ object ArtistDetailsApiRequest {
     suspend fun getArtistPopularSongs(artistName: String): List<ArtistPopularSong> {
         val result = api.getArtistPopularSongsAsync(artistName).await()
         if (result.track == null) {
-            throw Exception("Could not retrieve popular songs.")
+            return listOf()
         }
         return result.track
     }

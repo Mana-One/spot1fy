@@ -1,6 +1,5 @@
 package com.manaois.spot1fy.rankings
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

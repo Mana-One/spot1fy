@@ -40,8 +40,8 @@ class ArtistDiscographyItemAdapter(
             }
         }
 
-        fun bindPopularSong(data: ArtistPopularSong, position: Int) {
-            view.findViewById<TextView>(R.id.song_item_rank).text = "$position"
+        fun bindPopularSong(data: ArtistPopularSong, rank: Int) {
+            view.findViewById<TextView>(R.id.song_item_rank).text = "$rank"
             view.findViewById<TextView>(R.id.song_item_title).text = data.name
         }
     }
@@ -68,7 +68,7 @@ class ArtistDiscographyItemAdapter(
             ALBUM -> holder.bindAlbum(albums[position - 1])
             POPULAR_SONG -> holder.bindPopularSong(
                 popularSongs[position - albums.size - 2],
-                position - albums.size - 2
+                position - albums.size - 1
             )
             else -> throw Exception("Invalid view type.")
         }

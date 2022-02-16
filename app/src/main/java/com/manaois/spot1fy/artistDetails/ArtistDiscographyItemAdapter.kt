@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.manaois.spot1fy.R
 import com.manaois.spot1fy.artistDetails.models.ArtistAlbum
@@ -37,6 +38,12 @@ class ArtistDiscographyItemAdapter(
             if (data.thumbnail != null) {
                 val thumbnail: ImageView = view.findViewById(R.id.album_item_thumbnail)
                 Picasso.get().load(data.thumbnail).into(thumbnail)
+            }
+
+            view.setOnClickListener {
+                val action = ArtistDetailsFragmentDirections
+                    .actionArtistDetailsFragmentToAlbumDetailsFragment(albumId = data.id)
+                it.findNavController().navigate(action)
             }
         }
 

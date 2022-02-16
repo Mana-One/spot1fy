@@ -11,14 +11,8 @@ import com.manaois.spot1fy.rankings.models.RankedItem
 import com.manaois.spot1fy.rankings.network.RankingsApiRequest
 import kotlinx.coroutines.*
 
-class RankingsListFragment(private val label: String): Fragment() {
+class SongsRankingsListFragment: Fragment() {
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: RankingsItemAdapter
-
-    companion object {
-        const val TYPE_SONG = "song"
-        const val TYPE_ALBUM = "album"
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,11 +31,7 @@ class RankingsListFragment(private val label: String): Fragment() {
                 loader.visibility = View.VISIBLE
             }
 
-            val result = if (label == TYPE_SONG) {
-                RankingsApiRequest.getRankedSongs()
-            } else {
-                RankingsApiRequest.getRankedAlbums()
-            }
+            val result = RankingsApiRequest.getRankedSongs()
 
             withContext(Dispatchers.Main) {
                 recyclerView = view.findViewById<RecyclerView>(R.id.rankings_list).apply {

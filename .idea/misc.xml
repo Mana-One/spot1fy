@@ -10,8 +10,8 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23324275362318841" />
         <entry key="app/src/main/res/layout/album_item.xml" value="0.23324275362318841" />
         <entry key="app/src/main/res/layout/artist_item.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_album_details.xml" value="0.23324275362318841" />
-        <entry key="app/src/main/res/layout/fragment_artist_details.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_album_details.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_artist_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_favourites.xml" value="0.2472686767578125" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.23324275362318841" />
         <entry key="app/src/main/res/layout/fragment_rankings.xml" value="0.23963165283203128" />
@@ -20,6 +20,7 @@
         <entry key="app/src/main/res/layout/list_header.xml" value="0.1" />
         <entry key="app/src/main/res/layout/loader.xml" value="0.34332173665364585" />
         <entry key="app/src/main/res/layout/rankings_item.xml" value="0.2780349731445313" />
+        <entry key="app/src/main/res/layout/ratings_container.xml" value="0.5009938557942708" />
         <entry key="app/src/main/res/layout/song_item.xml" value="0.22428615517004563" />
         <entry key="app/src/main/res/menu/home_menu.xml" value="0.23072916666666668" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.1175925925925926" />

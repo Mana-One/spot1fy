@@ -55,6 +55,12 @@ class SearchListItemAdapter(
                 val thumbnail = view.findViewById<ImageView>(R.id.album_item_thumbnail)
                 Picasso.get().load(data.thumbnail).into(thumbnail)
             }
+
+            view.setOnClickListener {
+                val action = SearchFragmentDirections
+                    .actionSearchFragmentToAlbumDetailsFragment(albumId = data.id)
+                it.findNavController().navigate(action)
+            }
         }
     }
 

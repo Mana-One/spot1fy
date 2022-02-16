@@ -9,8 +9,8 @@ class RankingsAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
     override fun createFragment(position: Int): Fragment {
         return when(position) {
-            0 -> RankingsListFragment(RankingsListFragment.TYPE_SONG)
-            1 -> RankingsListFragment(RankingsListFragment.TYPE_ALBUM)
+            0 -> SongsRankingsListFragment()
+            1 -> AlbumsRankingsListFragment()
             else -> throw IllegalStateException("Non-existent tab")
         }
     }

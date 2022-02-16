@@ -38,10 +38,10 @@ class ArtistDetailsFragment : Fragment() {
             requireActivity().findNavController(R.id.nav_host_fragment).navigateUp()
         }
 
-        loadContent(view)
+        loadContent()
     }
 
-    private fun loadContent(view: View) {
+    private fun loadContent() {
         GlobalScope.launch {
             withContext(Dispatchers.Main) {
                 loader.visibility = View.VISIBLE

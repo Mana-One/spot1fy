@@ -20,13 +20,14 @@
 
     <ImageView
         android:id="@+id/album_details_image"
-        android:alpha="0.4"
         android:background="@color/grey"
         android:layout_width="match_parent"
         android:layout_height="223dp"
         android:scaleType="centerCrop"
+        android:tintMode="src_over"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:tint="#66000000" />
 
     <View
         android:id="@+id/album_details_back_arrow"
@@ -130,5 +131,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"/>
+
+    <include
+        android:id="@+id/loader"
+        layout="@layout/loader"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

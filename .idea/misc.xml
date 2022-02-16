@@ -10,7 +10,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23324275362318841" />
         <entry key="app/src/main/res/layout/album_item.xml" value="0.23324275362318841" />
         <entry key="app/src/main/res/layout/artist_item.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_album_details.xml" value="0.492468134414832" />
+        <entry key="app/src/main/res/layout/fragment_album_details.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_artist_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_favourites.xml" value="0.2472686767578125" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.23324275362318841" />

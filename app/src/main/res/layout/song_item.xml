@@ -6,7 +6,7 @@
 
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/song_item_rank"
-        android:layout_width="20dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
         style="@style/base_text"
@@ -20,6 +20,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:maxLines="1"
+        android:layout_marginLeft="10dp"
         android:text="I am a song item"
         style="@style/base_text"
         app:layout_constraintTop_toTopOf="parent"

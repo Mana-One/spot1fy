@@ -5,8 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.manaois.spot1fy.R
+import com.manaois.spot1fy.rankings.models.RankedAlbum
 import com.manaois.spot1fy.rankings.models.RankedItem
 import com.squareup.picasso.Picasso
 
@@ -26,6 +28,14 @@ class RankingsItemAdapter(
             Picasso.get().load(rankedItem.thumbnail).into(thumbnailImageView)
             titleTextView.text = rankedItem.name
             artistTextView.text = rankedItem.artist
+
+            if (rankedItem is RankedAlbum) {
+                view.setOnClickListener {
+                    val action = RankingsFragmentDirections
+                        .actionRankingsFragmentToAlbumDetailsFragment(albumId = rankedItem.id)
+                    it.findNavController().navigate(action)
+                }
+            }
         }
     }
 

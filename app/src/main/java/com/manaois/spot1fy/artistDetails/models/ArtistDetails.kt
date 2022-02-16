@@ -13,7 +13,16 @@ data class ArtistDetails(
     val locality: String,
     @SerializedName("strGenre")
     val genre: String,
-    @SerializedName("strBiographyEN")
-    val biography: String
+    @SerializedName(value ="strBiographyEN")
+    private val biographyEN: String,
+    @SerializedName(value ="strBiographyFR")
+    private val biographyFR: String?
 ) {
+    fun getBiography(lang: String): String {
+        val bio = when(lang) {
+            "français", "French" -> biographyFR
+            else -> biographyEN
+        }
+        return bio ?: biographyEN
+    }
 }

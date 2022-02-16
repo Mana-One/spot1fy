@@ -17,6 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.*
 
 class ArtistDetailsFragment : Fragment() {
     private lateinit var artistId: String
@@ -54,7 +55,7 @@ class ArtistDetailsFragment : Fragment() {
                 Picasso.get().load(artistDetails.image).into(artist_details_image)
                 artist_details_name.text = artistDetails.name
                 artist_details_locality_and_genre.text = "${artistDetails.locality} - ${artistDetails.genre}"
-                artist_details_biography.text = artistDetails.biography
+                artist_details_biography.text = artistDetails.getBiography(Locale.getDefault().displayLanguage)
                 artist_details_discography.apply {
                     adapter = ArtistDiscographyItemAdapter(albums, popularSongs)
                 }

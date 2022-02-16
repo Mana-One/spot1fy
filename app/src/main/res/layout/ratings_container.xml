@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="#F3F3F3"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    app:cardCornerRadius="10dp"
+    app:layout_constraintStart_toEndOf="@id/guideline_start"
+    app:layout_constraintEnd_toStartOf="@id/guideline_end"
+    app:layout_constraintTop_toBottomOf="@+id/album_details_image">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:backgroundTint="@color/white"
+            android:layout_width="44dp"
+            android:layout_height="22dp"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintStart_toStartOf="@+id/album_details_ratings_container"
+            app:layout_constraintTop_toTopOf="@id/album_details_ratings_container"
+            app:layout_constraintBottom_toBottomOf="@id/album_details_ratings_container">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <View
+                    android:id="@+id/ratings_icon"
+                    android:background="@drawable/ic_etoile"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="12.63dp"
+                    android:layout_height="12dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/ratings_score"/>
+
+                <TextView
+                    android:id="@+id/ratings_score"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="9.5"
+                    android:textColor="@color/grey"
+                    style="@style/small_text"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ratings_icon"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+    
+        <TextView
+            android:id="@+id/ratings_votes"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:text="Some votes"
+            style="@style/normal_text"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

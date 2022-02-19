@@ -7,12 +7,12 @@ import androidx.room.Query
 
 @Dao
 interface ArtistDao {
-    @Query("SELECT * FROM ArtistModel")
-    fun getAll(): List<ArtistModel>
+    @Query("SELECT * FROM LikedArtist")
+    fun getAll(): List<LikedArtist>
 
     @Insert
-    fun add(artist: ArtistModel)
+    fun add(artist: LikedArtist)
 
     @Delete
-    fun remove(artist: ArtistModel)
+    fun remove(artist: LikedArtist)
 }

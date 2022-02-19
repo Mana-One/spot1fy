@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class AlbumModel(
+data class LikedAlbum(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     @ColumnInfo

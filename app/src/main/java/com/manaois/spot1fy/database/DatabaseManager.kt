@@ -10,19 +10,27 @@ class DatabaseManager(context: Context) {
         "db.sqlite"
     ).build()
 
-    fun addLikedAlbum(album: AlbumModel) {
+    fun addLikedAlbum(album: LikedAlbum) {
         db.albumDao().add(album)
     }
 
-    fun addLikedArtist(artist: ArtistModel) {
+    fun addLikedArtist(artist: LikedArtist) {
         db.artistDao().add(artist)
     }
 
-    fun removeLikedAlbum(album: AlbumModel) {
+    fun getLikedAlbums(): List<LikedAlbum> {
+        return db.albumDao().getAll()
+    }
+
+    fun getLikedArtist(): List<LikedArtist> {
+        return db.artistDao().getAll()
+    }
+
+    fun removeLikedAlbum(album: LikedAlbum) {
         db.albumDao().remove(album)
     }
 
-    fun removeLikedArtist(artist: ArtistModel) {
+    fun removeLikedArtist(artist: LikedArtist) {
         db.artistDao().remove(artist)
     }
 }

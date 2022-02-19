@@ -112,20 +112,32 @@ class AlbumDetailsFragment: Fragment() {
 
     private fun like() {
         GlobalScope.launch {
+            withContext(Dispatchers.Main) {
+                loader.visibility = View.VISIBLE
+            }
+
             dbManager.addLikedAlbum(likedAlbum)
             isLiked = true
+
             withContext(Dispatchers.Main) {
                 album_details_like_icon.setBackgroundResource(R.drawable.ic_like_on)
+                loader.visibility = View.GONE
             }
         }
     }
 
     private fun unlike() {
         GlobalScope.launch {
+            withContext(Dispatchers.Main) {
+                loader.visibility = View.VISIBLE
+            }
+
             dbManager.removeLikedAlbum(likedAlbum)
             isLiked = false
+
             withContext(Dispatchers.Main) {
                 album_details_like_icon.setBackgroundResource(R.drawable.ic_like_off)
+                loader.visibility = View.GONE
             }
         }
     }

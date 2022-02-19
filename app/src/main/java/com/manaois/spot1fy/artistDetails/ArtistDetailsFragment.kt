@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.RecyclerView
 import com.manaois.spot1fy.R
+import com.manaois.spot1fy.artistDetails.models.ArtistAlbum
+import com.manaois.spot1fy.artistDetails.models.ArtistDetails
+import com.manaois.spot1fy.artistDetails.models.ArtistPopularSong
 import com.manaois.spot1fy.artistDetails.network.ArtistDetailsApiRequest
 import com.manaois.spot1fy.database.DatabaseManager
 import com.manaois.spot1fy.database.LikedArtist
@@ -62,40 +62,57 @@ class ArtistDetailsFragment : Fragment() {
             val albums = ArtistDetailsApiRequest.getArtistAlums(artistId).sortedByDescending { it.year }
             val popularSongs = ArtistDetailsApiRequest.getArtistPopularSongs(artistDetails.name)
 
-            val check = dbManager.findLikedArtist(artistId)
-            if (check != null){
-                isLiked = true
-                likedArtist = check
-            } else {
-                isLiked = false
-                likedArtist = LikedArtist(apiId = artistId, name = artistDetails.name, thumbnail = artistDetails.image)
-            }
-
+            checkLike(artistDetails)
 
             withContext(Dispatchers.Main) {
-                Picasso.get().load(artistDetails.image).into(artist_details_image)
-                artist_details_name.text = artistDetails.name
-                artist_details_locality_and_genre.text = "${artistDetails.locality} - ${artistDetails.genre}"
-                artist_details_biography.text = artistDetails.getBiography(Locale.getDefault().displayLanguage)
-                artist_details_discography.apply {
-                    adapter = ArtistDiscographyItemAdapter(albums, popularSongs)
-                }
-
-                val resBackground = if (isLiked) R.drawable.ic_like_on
-                    else R.drawable.ic_like_off
-                artist_details_like_icon.setBackgroundResource(resBackground)
-
-                loader.visibility = View.GONE
+                fillLayout(artistDetails, albums, popularSongs)
             }
         }
     }
 
+    private fun checkLike(artistDetails: ArtistDetails) {
+        val check = dbManager.findLikedArtist(artistId)
+        if (check != null){
+            isLiked = true
+            likedArtist = check
+        } else {
+            isLiked = false
+            likedArtist = LikedArtist(apiId = artistId, name = artistDetails.name, thumbnail = artistDetails.image)
+        }
+    }
+
+    private fun fillLayout(
+        artistDetails: ArtistDetails,
+        albums: List<ArtistAlbum>,
+        popularSongs: List<ArtistPopularSong>
+    ) {
+        Picasso.get().load(artistDetails.image).into(artist_details_image)
+        artist_details_name.text = artistDetails.name
+        artist_details_locality_and_genre.text = "${artistDetails.locality} - ${artistDetails.genre}"
+        artist_details_biography.text = artistDetails.getBiography(Locale.getDefault().displayLanguage)
+        artist_details_discography.apply {
+            adapter = ArtistDiscographyItemAdapter(albums, popularSongs)
+        }
+
+        val resBackground = if (isLiked) R.drawable.ic_like_on
+            else R.drawable.ic_like_off
+        artist_details_like_icon.setBackgroundResource(resBackground)
+
+        loader.visibility = View.GONE
+    }
+
     private fun like() {
         GlobalScope.launch {
+            withContext(Dispatchers.Main) {
+                loader.visibility = View.VISIBLE
+            }
+
             dbManager.addLikedArtist(likedArtist)
             isLiked = true
+
             withContext(Dispatchers.Main) {
                 artist_details_like_icon.setBackgroundResource(R.drawable.ic_like_on)
+                loader.visibility = View.GONE
             }
         }
     }

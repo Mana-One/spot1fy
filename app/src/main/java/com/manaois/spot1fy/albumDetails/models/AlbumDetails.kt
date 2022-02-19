@@ -16,7 +16,7 @@ data class AlbumDetails(
     @SerializedName("strDescriptionFR")
     private val descriptionFR: String?,
     @SerializedName("intScore")
-    val score: Int,
+    val score: Double,
     @SerializedName("intScoreVotes")
     val votes: Int
 ) {

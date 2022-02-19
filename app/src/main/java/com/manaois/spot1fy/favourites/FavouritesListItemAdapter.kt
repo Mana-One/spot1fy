@@ -1,6 +1,5 @@
 package com.manaois.spot1fy.favourites
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +8,8 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.manaois.spot1fy.R
-import com.manaois.spot1fy.favourites.models.LikedAlbum
-import com.manaois.spot1fy.favourites.models.LikedArtist
+import com.manaois.spot1fy.database.LikedAlbum
+import com.manaois.spot1fy.database.LikedArtist
 import com.squareup.picasso.Picasso
 
 class FavouritesListItemAdapter(
@@ -43,7 +42,7 @@ class FavouritesListItemAdapter(
 
             view.setOnClickListener {
                 val action = FavouritesFragmentDirections
-                    .actionFavouritesFragmentToArtistDetailsFragment(artistId = "147737")
+                    .actionFavouritesFragmentToArtistDetailsFragment(artistId = data.apiId)
                 it.findNavController().navigate(action)
             }
         }
@@ -58,7 +57,7 @@ class FavouritesListItemAdapter(
 
             view.setOnClickListener {
                 val action = FavouritesFragmentDirections
-                    .actionFavouritesFragmentToAlbumDetailsFragment(albumId = "2112973")
+                    .actionFavouritesFragmentToAlbumDetailsFragment(albumId = data.apiId)
                 it.findNavController().navigate(action)
             }
         }

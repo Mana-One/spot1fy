@@ -30,6 +30,10 @@ class FavouritesFragment: Fragment() {
 
     private fun loadData() {
         GlobalScope.launch {
+            withContext(Dispatchers.Main) {
+                loader.visibility = View.VISIBLE
+            }
+
             val dbManager = DatabaseManager(requireContext())
             val likedArtists = dbManager.getLikedArtist()
             val likedAlbums = dbManager.getLikedAlbums()
@@ -38,6 +42,7 @@ class FavouritesFragment: Fragment() {
                 favourites_list.apply {
                     adapter = FavouritesListItemAdapter(likedArtists, likedAlbums)
                 }
+                loader.visibility = View.GONE
             }
         }
     }

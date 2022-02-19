@@ -1,9 +1,6 @@
 package com.manaois.spot1fy.database
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface ArtistDao {
@@ -13,7 +10,7 @@ interface ArtistDao {
     @Query("SELECT * FROM LikedArtist WHERE apiId=:apiId")
     fun find(apiId: String): LikedArtist?
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun add(artist: LikedArtist)
 
     @Delete

@@ -11,6 +11,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.manaois.spot1fy.R
 import com.manaois.spot1fy.artistDetails.network.ArtistDetailsApiRequest
+import com.manaois.spot1fy.database.DatabaseManager
+import com.manaois.spot1fy.database.LikedArtist
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_artist_details.*
 import kotlinx.coroutines.Dispatchers
@@ -21,6 +23,9 @@ import java.util.*
 
 class ArtistDetailsFragment : Fragment() {
     private lateinit var artistId: String
+    private var isLiked: Boolean = false
+    private lateinit var likedArtist: LikedArtist
+    private lateinit var dbManager: DatabaseManager
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,17 +33,23 @@ class ArtistDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         artistId = arguments?.get("artistId").toString()
+        dbManager = DatabaseManager(requireContext())
         return inflater.inflate(R.layout.fragment_artist_details, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<View>(R.id.artist_details_back_arrow).setOnClickListener {
+        artist_details_back_arrow.setOnClickListener {
             requireActivity().findNavController(R.id.nav_host_fragment).navigateUp()
         }
 
         loadContent()
+
+        artist_details_like_icon.setOnClickListener {
+            if (isLiked) unlike()
+            else like()
+        }
     }
 
     private fun loadContent() {
@@ -51,6 +62,16 @@ class ArtistDetailsFragment : Fragment() {
             val albums = ArtistDetailsApiRequest.getArtistAlums(artistId).sortedByDescending { it.year }
             val popularSongs = ArtistDetailsApiRequest.getArtistPopularSongs(artistDetails.name)
 
+            val check = dbManager.findLikedArtist(artistId)
+            if (check != null){
+                isLiked = true
+                likedArtist = check
+            } else {
+                isLiked = false
+                likedArtist = LikedArtist(apiId = artistId, name = artistDetails.name, thumbnail = artistDetails.image)
+            }
+
+
             withContext(Dispatchers.Main) {
                 Picasso.get().load(artistDetails.image).into(artist_details_image)
                 artist_details_name.text = artistDetails.name
@@ -60,7 +81,31 @@ class ArtistDetailsFragment : Fragment() {
                     adapter = ArtistDiscographyItemAdapter(albums, popularSongs)
                 }
 
+                val resBackground = if (isLiked) R.drawable.ic_like_on
+                    else R.drawable.ic_like_off
+                artist_details_like_icon.setBackgroundResource(resBackground)
+
                 loader.visibility = View.GONE
+            }
+        }
+    }
+
+    private fun like() {
+        GlobalScope.launch {
+            dbManager.addLikedArtist(likedArtist)
+
+            withContext(Dispatchers.Main) {
+                artist_details_like_icon.setBackgroundResource(R.drawable.ic_like_on)
+            }
+        }
+    }
+
+    private fun unlike() {
+        GlobalScope.launch {
+            dbManager.removeLikedArtist(likedArtist)
+
+            withContext(Dispatchers.Main) {
+                artist_details_like_icon.setBackgroundResource(R.drawable.ic_like_off)
             }
         }
     }

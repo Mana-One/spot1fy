@@ -10,6 +10,9 @@ interface ArtistDao {
     @Query("SELECT * FROM LikedArtist")
     fun getAll(): List<LikedArtist>
 
+    @Query("SELECT * FROM LikedArtist WHERE apiId=:apiId")
+    fun find(apiId: String): LikedArtist?
+
     @Insert
     fun add(artist: LikedArtist)
 

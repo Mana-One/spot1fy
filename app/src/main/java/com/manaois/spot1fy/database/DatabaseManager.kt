@@ -18,6 +18,14 @@ class DatabaseManager(context: Context) {
         db.artistDao().add(artist)
     }
 
+    fun findLikedAlbum(apiId: String): LikedAlbum? {
+        return db.albumDao().find(apiId)
+    }
+
+    fun findLikedArtist(apiId: String): LikedArtist? {
+        return db.artistDao().find(apiId)
+    }
+
     fun getLikedAlbums(): List<LikedAlbum> {
         return db.albumDao().getAll()
     }

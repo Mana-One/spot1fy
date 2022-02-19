@@ -93,7 +93,7 @@ class ArtistDetailsFragment : Fragment() {
     private fun like() {
         GlobalScope.launch {
             dbManager.addLikedArtist(likedArtist)
-
+            isLiked = true
             withContext(Dispatchers.Main) {
                 artist_details_like_icon.setBackgroundResource(R.drawable.ic_like_on)
             }
@@ -103,7 +103,7 @@ class ArtistDetailsFragment : Fragment() {
     private fun unlike() {
         GlobalScope.launch {
             dbManager.removeLikedArtist(likedArtist)
-
+            isLiked = false
             withContext(Dispatchers.Main) {
                 artist_details_like_icon.setBackgroundResource(R.drawable.ic_like_off)
             }

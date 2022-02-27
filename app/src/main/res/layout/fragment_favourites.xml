@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:text="Favourites"
+        android:text="@string/favourites_header"
         style="@style/H1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"/>
@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:text="My artists and albums"
+        android:text="@string/favourites_subtitle"
         style="@style/normal_text_grey"
         app:layout_constraintTop_toBottomOf="@id/favourites_title"
         app:layout_constraintLeft_toLeftOf="parent"/>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/rankingsFragment"
-        android:title="Rankings"
+        android:title="@string/rankings_header"
         android:icon="@drawable/ic_accueil_classements" />
 
     <item android:id="@+id/searchFragment"
-        android:title="Search"
+        android:title="@string/search_header"
         android:icon="@drawable/ic_accueil_recherche" />
 
     <item android:id="@+id/favouritesFragment"
-        android:title="Favourites"
+        android:title="@string/favourites_header"
         android:icon="@drawable/ic_accueil_favoris" />
 </menu>

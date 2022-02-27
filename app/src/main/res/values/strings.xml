@@ -4,6 +4,7 @@
     <string name="songs_header">Songs</string>
     <string name="albums_header">Albums</string>
     <string name="search_header">Search</string>
+    <string name="search_hint">Artist\'s name</string>
     <string name="artists_header">Artists</string>
     <string name="favourites_header">Favourites</string>
     <string name="favourites_subtitle">My artists &amp; albums</string>

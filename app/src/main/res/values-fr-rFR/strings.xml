@@ -10,19 +10,19 @@
     <string name="favourites_header">Favoris</string>
     <string name="favourites_subtitle">Mes artistes &amp; albums</string>
     <plurals name="album_count">
-        <item quantity="one">Album ($1%d)</item>
-        <item quantity="many">Albums ($1%d)</item>
-        <item quantity="other">Albums ($1%d)</item>
+        <item quantity="one">Album (%d)</item>
+        <item quantity="many">Albums (%d)</item>
+        <item quantity="other">Albums (%d)</item>
     </plurals>
     <string name="most_popular_songs">Titres les plus populaires</string>
     <plurals name="song_count">
-        <item quantity="one">$1%d chanson</item>
-        <item quantity="many">$1%d chansons</item>
-        <item quantity="other">$1%d chansons</item>
+        <item quantity="one">%d chanson</item>
+        <item quantity="many">%d chansons</item>
+        <item quantity="other">%d chansons</item>
     </plurals>
     <plurals name="vote_count">
-        <item quantity="one">$1%d vote</item>
-        <item quantity="many">$1%d votes</item>
-        <item quantity="other">$1%d votes</item>
+        <item quantity="one">%d vote</item>
+        <item quantity="many">%d votes</item>
+        <item quantity="other">%d votes</item>
     </plurals>
 </resources>

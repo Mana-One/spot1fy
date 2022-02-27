@@ -9,16 +9,16 @@
     <string name="favourites_header">Favourites</string>
     <string name="favourites_subtitle">My artists &amp; albums</string>
     <plurals name="album_count">
-        <item quantity="one">Album ($1%d)</item>
-        <item quantity="other">Albums ($1%d)</item>
+        <item quantity="one">Album (%d)</item>
+        <item quantity="other">Albums (%d)</item>
     </plurals>
     <string name="most_popular_songs">Most popular songs</string>
     <plurals name="song_count">
-        <item quantity="one">$1%d song</item>
-        <item quantity="other">$1%d songs</item>
+        <item quantity="one">%d song</item>
+        <item quantity="other">%d songs</item>
     </plurals>
     <plurals name="vote_count">
-        <item quantity="one">$1%d vote</item>
-        <item quantity="other">$1%d votes</item>
+        <item quantity="one">%d vote</item>
+        <item quantity="other">%d votes</item>
     </plurals>
 </resources>

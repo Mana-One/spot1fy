@@ -17,5 +17,22 @@ abstract class APIErrorDialogUtils {
             builder.setCancelable(false)
             builder.show()
         }
+
+        fun showErrorDialog(
+            context: Context,
+            view: View,
+            strInput: String,
+            action: (view: View, input: String) -> Unit
+        ) {
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("Title")
+            builder.setMessage("Message")
+            builder.setPositiveButton("Ok") { _, _ ->
+                action(view, strInput)
+            }
+            builder.setNegativeButton("Cancel") { _, _ -> }
+            builder.setCancelable(false)
+            builder.show()
+        }
     }
 }

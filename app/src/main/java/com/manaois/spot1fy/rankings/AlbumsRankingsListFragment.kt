@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.manaois.spot1fy.R
+import com.manaois.spot1fy.common.APIErrorDialogUtils
 import com.manaois.spot1fy.rankings.network.RankingsApiRequest
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -26,20 +27,29 @@ class AlbumsRankingsListFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        fillLayout(view)
+    }
 
+    private fun fillLayout(view: View) {
         val loader = view.findViewById<View>(R.id.loader)
         GlobalScope.launch() {
-            withContext(Dispatchers.Main) {
-                loader.visibility = View.VISIBLE
-            }
-
-            val result = RankingsApiRequest.getRankedAlbums()
-
-            withContext(Dispatchers.Main) {
-                recyclerView = view.findViewById<RecyclerView>(R.id.rankings_list).apply {
-                    adapter = RankingsItemAdapter(result)
+            try {
+                withContext(Dispatchers.Main) {
+                    loader.visibility = View.VISIBLE
                 }
-                loader.visibility = View.GONE
+
+                val result = RankingsApiRequest.getRankedAlbums()
+
+                withContext(Dispatchers.Main) {
+                    recyclerView = view.findViewById<RecyclerView>(R.id.rankings_list).apply {
+                        adapter = RankingsItemAdapter(result)
+                    }
+                    loader.visibility = View.GONE
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    APIErrorDialogUtils.showErrorDialog(view.context, view, ::fillLayout)
+                }
             }
         }
     }

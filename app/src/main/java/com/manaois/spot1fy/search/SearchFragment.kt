@@ -9,6 +9,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.manaois.spot1fy.R
+import com.manaois.spot1fy.common.APIErrorDialogUtils
 import com.manaois.spot1fy.search.network.SearchApiRequest
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -38,7 +39,7 @@ class SearchFragment: Fragment() {
             afterTextChanged = {
                 val input = it?.toString()
                 if (input != null && input.isNotEmpty()) {
-                    search(input)
+                    search(view, input)
                 }
             }
         )
@@ -52,20 +53,31 @@ class SearchFragment: Fragment() {
         }
     }
 
-    private fun search(input: String) {
+    private fun search(view: View, input: String) {
         GlobalScope.launch {
-            withContext(Dispatchers.Main) {
-                loader.visibility = View.VISIBLE
-            }
-
-            val albums = SearchApiRequest.searchAlbums(input) ?: listOf()
-            val artists = SearchApiRequest.searchArtists(input) ?: listOf()
-
-            withContext(Dispatchers.Main) {
-                recyclerView.apply {
-                    adapter = SearchListItemAdapter(artists, albums)
+            try {
+                withContext(Dispatchers.Main) {
+                    loader.visibility = View.VISIBLE
                 }
-                loader.visibility = View.GONE
+
+                val albums = SearchApiRequest.searchAlbums(input) ?: listOf()
+                val artists = SearchApiRequest.searchArtists(input) ?: listOf()
+
+                withContext(Dispatchers.Main) {
+                    recyclerView.apply {
+                        adapter = SearchListItemAdapter(artists, albums)
+                    }
+                    loader.visibility = View.GONE
+                }
+            } catch(e: Exception) {
+                withContext(Dispatchers.Main) {
+                    APIErrorDialogUtils.showErrorDialog(
+                        view.context,
+                        view,
+                        input,
+                        ::search
+                    )
+                }
             }
         }
     }

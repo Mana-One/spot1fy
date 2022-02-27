@@ -1,4 +1,4 @@
-package com.manaois.spot1fy.network
+package com.manaois.spot1fy.common
 
 import com.manaois.spot1fy.BuildConfig
 import okhttp3.Interceptor

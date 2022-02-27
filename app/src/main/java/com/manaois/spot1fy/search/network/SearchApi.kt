@@ -1,7 +1,7 @@
 package com.manaois.spot1fy.search.network
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.manaois.spot1fy.network.APIInterceptor
+import com.manaois.spot1fy.common.APIInterceptor
 import com.manaois.spot1fy.search.models.Album
 import com.manaois.spot1fy.search.models.Artist
 import kotlinx.coroutines.Deferred

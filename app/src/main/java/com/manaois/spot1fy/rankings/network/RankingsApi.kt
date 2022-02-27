@@ -1,7 +1,7 @@
 package com.manaois.spot1fy.rankings.network
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.manaois.spot1fy.network.APIInterceptor
+import com.manaois.spot1fy.common.APIInterceptor
 import com.manaois.spot1fy.rankings.models.RankedAlbum
 import com.manaois.spot1fy.rankings.models.RankedItem
 import com.manaois.spot1fy.rankings.models.RankedSong
@@ -39,6 +39,7 @@ interface RankingsApi {
 }
 
 object RankingsApiRequest {
+    // private var c = 0
     private val api = Retrofit.Builder()
         .baseUrl("https://theaudiodb.com/api/v1/json/_API_KEY_/")
         .addConverterFactory(GsonConverterFactory.create())
@@ -52,6 +53,10 @@ object RankingsApiRequest {
         .create(RankingsApi::class.java)
 
     suspend fun getRankedSongs(): List<RankedItem> {
+        /*if (c == 0) {
+            c++
+            throw Exception("hey")
+        }*/
         val result = api.getRankedSongs().await()
         return result.trending
     }

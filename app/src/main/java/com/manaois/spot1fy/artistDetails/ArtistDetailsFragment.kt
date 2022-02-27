@@ -11,6 +11,7 @@ import com.manaois.spot1fy.artistDetails.models.ArtistAlbum
 import com.manaois.spot1fy.artistDetails.models.ArtistDetails
 import com.manaois.spot1fy.artistDetails.models.ArtistPopularSong
 import com.manaois.spot1fy.artistDetails.network.ArtistDetailsApiRequest
+import com.manaois.spot1fy.common.APIErrorDialogUtils
 import com.manaois.spot1fy.database.DatabaseManager
 import com.manaois.spot1fy.database.LikedArtist
 import com.squareup.picasso.Picasso
@@ -44,7 +45,7 @@ class ArtistDetailsFragment : Fragment() {
             requireActivity().findNavController(R.id.nav_host_fragment).navigateUp()
         }
 
-        loadContent()
+        loadContent(view)
 
         artist_details_like_icon.setOnClickListener {
             if (isLiked) unlike()
@@ -52,20 +53,26 @@ class ArtistDetailsFragment : Fragment() {
         }
     }
 
-    private fun loadContent() {
+    private fun loadContent(view: View) {
         GlobalScope.launch {
-            withContext(Dispatchers.Main) {
-                loader.visibility = View.VISIBLE
-            }
+            try {
+                withContext(Dispatchers.Main) {
+                    loader.visibility = View.VISIBLE
+                }
 
-            val artistDetails = ArtistDetailsApiRequest.getArtistDetails(artistId)
-            val albums = ArtistDetailsApiRequest.getArtistAlums(artistId).sortedByDescending { it.year }
-            val popularSongs = ArtistDetailsApiRequest.getArtistPopularSongs(artistDetails.name)
+                val artistDetails = ArtistDetailsApiRequest.getArtistDetails(artistId)
+                val albums = ArtistDetailsApiRequest.getArtistAlums(artistId).sortedByDescending { it.year }
+                val popularSongs = ArtistDetailsApiRequest.getArtistPopularSongs(artistDetails.name)
 
-            checkLike(artistDetails)
+                checkLike(artistDetails)
 
-            withContext(Dispatchers.Main) {
-                fillLayout(artistDetails, albums, popularSongs)
+                withContext(Dispatchers.Main) {
+                    fillLayout(artistDetails, albums, popularSongs)
+                }
+            } catch(e: Exception) {
+                withContext(Dispatchers.Main) {
+                    APIErrorDialogUtils.showErrorDialog(view.context, view, ::loadContent)
+                }
             }
         }
     }

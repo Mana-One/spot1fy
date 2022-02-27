@@ -3,7 +3,7 @@ package com.manaois.spot1fy.albumDetails.network
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.manaois.spot1fy.albumDetails.models.AlbumDetails
 import com.manaois.spot1fy.albumDetails.models.AlbumSong
-import com.manaois.spot1fy.network.APIInterceptor
+import com.manaois.spot1fy.common.APIInterceptor
 import kotlinx.coroutines.Deferred
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

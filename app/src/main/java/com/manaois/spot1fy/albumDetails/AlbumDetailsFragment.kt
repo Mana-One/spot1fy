@@ -10,6 +10,7 @@ import com.manaois.spot1fy.R
 import com.manaois.spot1fy.albumDetails.models.AlbumDetails
 import com.manaois.spot1fy.albumDetails.models.AlbumSong
 import com.manaois.spot1fy.albumDetails.network.AlbumDetailsRequest
+import com.manaois.spot1fy.common.APIErrorDialogUtils
 import com.manaois.spot1fy.database.DatabaseManager
 import com.manaois.spot1fy.database.LikedAlbum
 import com.squareup.picasso.Picasso
@@ -46,7 +47,7 @@ class AlbumDetailsFragment: Fragment() {
             requireActivity().findNavController(R.id.nav_host_fragment).navigateUp()
         }
 
-        loadContent()
+        loadContent(view)
 
         album_details_like_icon.setOnClickListener {
             if (isLiked) unlike()
@@ -54,19 +55,25 @@ class AlbumDetailsFragment: Fragment() {
         }
     }
 
-    private fun loadContent() {
+    private fun loadContent(view: View) {
         GlobalScope.launch {
-            withContext(Dispatchers.Main) {
-                loader.visibility = View.VISIBLE
-            }
+            try {
+                withContext(Dispatchers.Main) {
+                    loader.visibility = View.VISIBLE
+                }
 
-            val albumDetails = AlbumDetailsRequest.getAlbumDetails(albumId)
-            val albumSongs = AlbumDetailsRequest.getAlbumSongs(albumId)
+                val albumDetails = AlbumDetailsRequest.getAlbumDetails(albumId)
+                val albumSongs = AlbumDetailsRequest.getAlbumSongs(albumId)
 
-            checkLike(albumDetails)
+                checkLike(albumDetails)
 
-            withContext(Dispatchers.Main) {
-                fillLayout(albumDetails, albumSongs)
+                withContext(Dispatchers.Main) {
+                    fillLayout(albumDetails, albumSongs)
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    APIErrorDialogUtils.showErrorDialog(view.context, view, ::loadContent)
+                }
             }
         }
     }

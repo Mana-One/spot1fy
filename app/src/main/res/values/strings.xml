@@ -21,4 +21,6 @@
         <item quantity="one">%d vote</item>
         <item quantity="other">%d votes</item>
     </plurals>
+    <string name="error_header">Error</string>
+    <string name="error_message">An error occurred while fetching data</string>
 </resources>

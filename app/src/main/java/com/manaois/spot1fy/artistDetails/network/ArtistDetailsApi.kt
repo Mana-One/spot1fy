@@ -4,7 +4,7 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import com.manaois.spot1fy.artistDetails.models.ArtistAlbum
 import com.manaois.spot1fy.artistDetails.models.ArtistDetails
 import com.manaois.spot1fy.artistDetails.models.ArtistPopularSong
-import com.manaois.spot1fy.network.APIInterceptor
+import com.manaois.spot1fy.common.APIInterceptor
 import kotlinx.coroutines.Deferred
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

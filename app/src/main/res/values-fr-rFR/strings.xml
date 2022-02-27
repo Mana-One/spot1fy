@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Spot1fy</string>
+    <string name="rankings_header">Classements</string>
+    <string name="songs_header">Titres</string>
+    <string name="albums_header">Albums</string>
+    <string name="search_header">Rechercher</string>
+    <string name="artists_header">Artistes</string>
+    <string name="favourites_header">Favoris</string>
+    <string name="favourites_subtitle">Mes artistes &amp; albums</string>
+</resources>

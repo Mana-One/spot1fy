@@ -25,11 +25,13 @@ class ArtistDiscographyItemAdapter(
 
     class ArtistDiscographyItemViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
         fun bindAlbumsHeader(count: Int) {
-            view.findViewById<TextView>(R.id.list_header_title).text = "Albums ($count)"
+            view.findViewById<TextView>(R.id.list_header_title)
+                .text = itemView.context.resources.getQuantityString(R.plurals.album_count, count, count)
         }
 
         fun bindPopularSongsHeader() {
-            view.findViewById<TextView>(R.id.list_header_title).text = "Most popular songs"
+            view.findViewById<TextView>(R.id.list_header_title)
+                .text = itemView.context.getString(R.string.most_popular_songs)
         }
 
         fun bindAlbum(data: ArtistAlbum) {

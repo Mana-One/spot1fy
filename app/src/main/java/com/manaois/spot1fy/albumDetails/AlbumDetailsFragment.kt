@@ -94,9 +94,11 @@ class AlbumDetailsFragment: Fragment() {
         }
         album_details_artist_name.text = albumDetails.artist
         album_details_name.text = albumDetails.name
-        album_details_songs_count.text = "${albumSongs.size} songs"
+        album_details_songs_count.text = resources
+            .getQuantityString(R.plurals.song_count, albumSongs.size, albumSongs.size )
         ratings_score.text = "${albumDetails.score}"
-        ratings_votes.text = "${albumDetails.votes} votes"
+        ratings_votes.text = resources
+            .getQuantityString(R.plurals.vote_count, albumDetails.votes, albumDetails.votes)
         album_details_description.text = albumDetails
             .getDescription(Locale.getDefault().displayLanguage)
         album_details_songs.apply {

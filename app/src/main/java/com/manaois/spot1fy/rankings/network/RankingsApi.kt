@@ -1,10 +1,12 @@
 package com.manaois.spot1fy.rankings.network
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.manaois.spot1fy.network.APIInterceptor
 import com.manaois.spot1fy.rankings.models.RankedAlbum
 import com.manaois.spot1fy.rankings.models.RankedItem
 import com.manaois.spot1fy.rankings.models.RankedSong
 import kotlinx.coroutines.Deferred
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -38,9 +40,14 @@ interface RankingsApi {
 
 object RankingsApiRequest {
     private val api = Retrofit.Builder()
-        .baseUrl("https://theaudiodb.com/api/v1/json/523532/")
+        .baseUrl("https://theaudiodb.com/api/v1/json/_API_KEY_/")
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
+        .client(
+            OkHttpClient().newBuilder()
+                .addInterceptor(APIInterceptor())
+                .build()
+        )
         .build()
         .create(RankingsApi::class.java)
 

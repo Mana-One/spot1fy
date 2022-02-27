@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Spot1fy</string>
+    <string name="rankings_header">Classements</string>
+    <string name="songs_header">Titres</string>
+    <string name="albums_header">Albums</string>
+    <string name="search_header">Rechercher</string>
+    <string name="search_hint">Nom d\'artiste</string>
+    <string name="artists_header">Artistes</string>
+    <string name="favourites_header">Favoris</string>
+    <string name="favourites_subtitle">Mes artistes &amp; albums</string>
+    <plurals name="album_count">
+        <item quantity="one">Album (%d)</item>
+        <item quantity="many">Albums (%d)</item>
+        <item quantity="other">Albums (%d)</item>
+    </plurals>
+    <string name="most_popular_songs">Titres les plus populaires</string>
+    <plurals name="song_count">
+        <item quantity="one">%d chanson</item>
+        <item quantity="many">%d chansons</item>
+        <item quantity="other">%d chansons</item>
+    </plurals>
+    <plurals name="vote_count">
+        <item quantity="one">%d vote</item>
+        <item quantity="many">%d votes</item>
+        <item quantity="other">%d votes</item>
+    </plurals>
+</resources>

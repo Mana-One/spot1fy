@@ -29,7 +29,8 @@ class RankingsFragment: Fragment() {
         viewPager.adapter = rankingsAdapter
         val tabLayout: TabLayout = view.findViewById(R.id.rankings_tab_layout)
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = if (position == 0) "Songs" else "Albums"
+            tab.text = if (position == 0) getString(R.string.songs_header)
+                else getString(R.string.albums_header)
         }.attach()
     }
 }

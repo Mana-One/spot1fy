@@ -27,11 +27,13 @@ class SearchListItemAdapter(
 
     class SearchListItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         fun bindArtistsHeader() {
-            view.findViewById<TextView>(R.id.list_header_title).text = "Artists"
+            view.findViewById<TextView>(R.id.list_header_title)
+                .text = itemView.context.getString(R.string.artists_header)
         }
 
         fun bindAlbumsHeader() {
-            view.findViewById<TextView>(R.id.list_header_title).text = "Albums"
+            view.findViewById<TextView>(R.id.list_header_title)
+                .text = itemView.context.getString(R.string.albums_header)
         }
 
         fun bindArtist(data: Artist) {

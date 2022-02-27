@@ -18,7 +18,8 @@ class AlbumSongsItemAdapter(
 
     class AlbumSongsItemViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
         fun bindSongsHeader() {
-            view.findViewById<TextView>(R.id.list_header_title).text = "Songs"
+            view.findViewById<TextView>(R.id.list_header_title)
+                .text = itemView.context.getString(R.string.songs_header)
         }
 
         fun bindSong(data: AlbumSong, rank: Int) {

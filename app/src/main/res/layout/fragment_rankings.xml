@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:text="Rankings"
+        android:text="@string/rankings_header"
         style="@style/H1" />
 
     <com.google.android.material.tabs.TabLayout

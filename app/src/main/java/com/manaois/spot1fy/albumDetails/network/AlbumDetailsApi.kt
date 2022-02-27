@@ -3,7 +3,9 @@ package com.manaois.spot1fy.albumDetails.network
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.manaois.spot1fy.albumDetails.models.AlbumDetails
 import com.manaois.spot1fy.albumDetails.models.AlbumSong
+import com.manaois.spot1fy.network.APIInterceptor
 import kotlinx.coroutines.Deferred
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -31,9 +33,14 @@ interface AlbumDetailsApi {
 
 object AlbumDetailsRequest {
     private val api = Retrofit.Builder()
-        .baseUrl("https://theaudiodb.com/api/v1/json/523532/")
+        .baseUrl("https://theaudiodb.com/api/v1/json/_API_KEY_/")
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
+        .client(
+            OkHttpClient().newBuilder()
+                .addInterceptor(APIInterceptor())
+                .build()
+        )
         .build()
         .create(AlbumDetailsApi::class.java)
 

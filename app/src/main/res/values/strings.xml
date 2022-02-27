@@ -23,4 +23,6 @@
     </plurals>
     <string name="error_header">Error</string>
     <string name="error_message">An error occurred while fetching data</string>
+    <string name="retry">Retry</string>
+    <string name="cancel">Cancel</string>
 </resources>

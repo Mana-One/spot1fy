@@ -25,4 +25,8 @@
         <item quantity="many">%d votes</item>
         <item quantity="other">%d votes</item>
     </plurals>
+    <string name="error_header">Erreur</string>
+    <string name="error_message">Une erreur est survenue lors de la récupération des données</string>
+    <string name="retry">Réessayer</string>
+    <string name="cancel">Annuler</string>
 </resources>
